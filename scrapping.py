@@ -6,6 +6,14 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import time
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+password = os.getenv('PASSWORD')
+email = os.getenv('EMAIL')
+
 
 # Initialiser le navigateur
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -16,8 +24,8 @@ driver.get("https://app.campus.coach/auth/signin")
 username_field = driver.find_element(By.NAME, "email")
 password_field = driver.find_element(By.NAME, "password")
 
-username_field.send_keys("theocostes77@gmail.com")
-password_field.send_keys("")
+username_field.send_keys(email)
+password_field.send_keys(password)
 
 # Soumettre le formulaire
 password_field.send_keys(Keys.RETURN)
@@ -49,4 +57,3 @@ for element in elements_with_classes:
     class_list = element.get('class')
     if "campus-ds__Wrapper-sc-niysmc-4" in class_list and "felyqZ" in class_list and len(class_list) <= 2:
         print(element.h3)
-
