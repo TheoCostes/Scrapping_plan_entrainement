@@ -17,7 +17,7 @@ username_field = driver.find_element(By.NAME, "email")
 password_field = driver.find_element(By.NAME, "password")
 
 username_field.send_keys("theocostes77@gmail.com")
-password_field.send_keys("76d!XCd&8XHpiP!T")
+password_field.send_keys("")
 
 # Soumettre le formulaire
 password_field.send_keys(Keys.RETURN)
